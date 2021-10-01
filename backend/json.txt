@@ -1,0 +1,19 @@
+{
+    "memberName":"m3",
+    "email":"m3@gmail.com",
+    "password":"password3",
+    "RACUOK_ID":"rac3",
+    "nic":"123vvv",
+    "birthDate":"2021-09-29T22:53:56.125+00:00",
+    "city":"city3",
+    "avenue":"it",
+    "acedemicYear":"2017/2018",
+    "userType":"member",
+    "skills":"wordpress"
+}
+
+{
+    "avenueName":"IS",
+    "avenueId":"av2",
+    "noOfMembers":20
+}
