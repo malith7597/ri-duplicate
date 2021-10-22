@@ -17,3 +17,18 @@
     "avenueId":"av2",
     "noOfMembers":20
 }
+
+{
+    "avenueName":"IT",
+    "projectId":"p1",
+    "projectName":"webinar",
+    "startDate":"2021-09-25T16:08:48.986+00:00",
+    "duration":"2months",
+    "projectStatus":true,
+    "task":[{
+        "role":"chair",
+        "RACUOK_ID":"RACUOK_01",
+        "points":10
+    }],
+    "projectMilestones":"started"
+}

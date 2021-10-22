@@ -4,24 +4,20 @@ const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
 const morgan = require('morgan');
+const connectDB = require('./config/connection');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-dotenv.config({path:'config.env'})
 const PORT = process.env.PORT || 5000;
-const uri = process.env.LOCAL_URI;
 
 //log requests
 app.use(morgan('tiny'));
 
 //db connection
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true}, err => {
-    if (err) throw err;
-    console.log("Connected to mongodb");
-})
+connectDB();
 
 //load routes
 const memberRouter = require('./routes/member');
