@@ -1,12 +1,11 @@
 const mongoose = require('mongoose')
-// const Task = require('./task.model')
 
 const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
     role:[String],
-    RACUOK_ID:[Number],
-    points:Number
+    RACUOK_ID:[String],
+   
 })
 
 const projectSchema = new Schema({
@@ -26,16 +25,16 @@ const projectSchema = new Schema({
         type:String,
          required:true
     },
+    task:{
+        type:taskSchema,
+        required:true
+    },
     projectStatus:{
         type:Boolean,
          required:true,
          default:false
     },
-    task:taskSchema,
-    projectMilestones:{
-        type:String,
-        required:true
-    },
+    projectMilestones:[String],
 },{
     timestamps:true
 });

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const memberSchema = new Schema({
     memberName:{
-        type:String, 
+        type:String,  
         required:true
     },
     email:{
@@ -20,10 +20,6 @@ const memberSchema = new Schema({
         type:String,
          required:true
     },
-    nic:{
-        type:String, 
-        required:true
-    },
     birthDate:{
         type:Date, 
         required:true
@@ -36,7 +32,7 @@ const memberSchema = new Schema({
         type:String,
         required:true
     },
-    acedemicYear:{
+    academicYear:{
         type:String,
         required:true
     },

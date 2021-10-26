@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 //log requests
 app.use(morgan('tiny'));
@@ -23,10 +23,12 @@ connectDB();
 const memberRouter = require('./routes/member');
 const avenueRouter = require('./routes/avenue');
 const projectRouter = require('./routes/project');
+const skillRouter = require('./routes/skill')
 
 app.use('/members', memberRouter);
 app.use('/avenues', avenueRouter);
 app.use('/projects', projectRouter);
+app.use('/skills', skillRouter)
 
 
 app.listen(PORT, ()=>{

@@ -5,7 +5,7 @@ const generateToken = require('../utils/generateToken')
 // register user
 
 const registerMember = asyncHandler(async (req, res) => {
-    const {memberName, email, password, RACUOK_ID, birthDate, avenue, isAdmin, pic} = req.body
+    const {memberName, email, password, RACUOK_ID, birthDate, city, avenue, academicYear, isAdmin, pic} = req.body
 
     const memberExists = await Member.findOne({email})
 
@@ -16,7 +16,7 @@ const registerMember = asyncHandler(async (req, res) => {
 
     // create new Member
     const member = await Member.create({
-        memberName, email, password, RACUOK_ID, birthDate,city, avenue, acedemicYear,isAdmin, pic
+        memberName, email, password, RACUOK_ID, birthDate, city, avenue, academicYear, isAdmin, pic
     });
 
     if (member) {
@@ -24,13 +24,10 @@ const registerMember = asyncHandler(async (req, res) => {
             _id:member._id,
             memberName:member.memberName,
             email:member.email,
-            isAdmin:member.isAdmin,
-            birthDate:member.birthDate,
-            city:member.city,
-            avenue:member.acedemicYear,
-            pic:user.pic,
-            token:generateToken(user._id)
+            RACUOK_ID:member.RACUOK_ID,
+            token:generateToken(member._id)
         })
+        console.log("Member added!");
     }
     else {
         res.status(400)
@@ -47,16 +44,13 @@ const authMember = asyncHandler(async (req,res) => {
 
     if(member && (await member.matchPassword(password))) {
         res.json({
-            _id:user._id,
+            _id:member._id,
             name:member.memberName,
             email:member.email,
-            isAdmin:member.isAdmin,
-            birthDate:member.birthDate,
-            city:member.city,
-            pic:user.pic,
-            token:generateToken(user._id),
+            token:generateToken(member._id),
 
         })
+        console.log("Successfully logged in!");
     } else {
         res.status(400)
         throw new Error("Invalid Email or password!");

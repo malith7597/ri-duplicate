@@ -3,14 +3,14 @@
     "email":"m3@gmail.com",
     "password":"password3",
     "RACUOK_ID":"rac3",
-    "nic":"123vvv",
     "birthDate":"2021-09-29T22:53:56.125+00:00",
     "city":"city3",
     "avenue":"it",
-    "acedemicYear":"2017/2018",
-    "userType":"member",
-    "skills":"wordpress"
+    "academicYear":"2017/2018",
+    "isAdmin":true,
+    "pic":"none"
 }
+
 
 {
     "avenueName":"IS",
@@ -20,15 +20,10 @@
 
 {
     "avenueName":"IT",
-    "projectId":"p1",
-    "projectName":"webinar",
+    "projectName":"Wordpress Webinar",
     "startDate":"2021-09-25T16:08:48.986+00:00",
-    "duration":"2months",
+    "duration":"3months",
     "projectStatus":true,
-    "task":[{
-        "role":"chair",
-        "RACUOK_ID":"RACUOK_01",
-        "points":10
-    }],
-    "projectMilestones":"started"
+    "task":{"role":["chair","co-chair"],"RACUOK_ID":["RAC1","RAC2"]},
+    "projectMilestones":["started","finished"]
 }
