@@ -19,11 +19,15 @@
 }
 
 {
-    "avenueName":"IT",
-    "projectName":"Wordpress Webinar",
+    "avenueName":"Club Service",
+    "projectName":"Sonduru Sajje",
     "startDate":"2021-09-25T16:08:48.986+00:00",
-    "duration":"3months",
+    "duration":"3weeks",
     "projectStatus":true,
-    "task":{"role":["chair","co-chair"],"RACUOK_ID":["RAC1","RAC2"]},
-    "projectMilestones":["started","finished"]
+    "task":{
+        "role":["chair","co-chair","secretary","flyer designer","moderator","finance director"],
+        "RACUOK_ID":["RAC1","RAC2","RAC3","RAC4","RAC5","RAC6"],
+        "points":[10,20,10,30,40,10]
+    },
+    "projectMilestones":["started","dry run","finished"]
 }

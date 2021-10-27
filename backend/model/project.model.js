@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const taskSchema = new Schema({
     role:[String],
     RACUOK_ID:[String],
+    points:[Number],
    
 })
 
