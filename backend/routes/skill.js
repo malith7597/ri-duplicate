@@ -1,45 +1,23 @@
 const router = require('express').Router();
 let Skill = require('../model/skills.model')
 
+var skillController = require('../controller/skillController')
+
 // get skills
-router.route('/').get((req,res) => {
-    Skill.find()
-    .then(skill => res.json(skill))
-    .catch(err => res.status(400).json('Error'+err));
-})
+router.get('/',skillController.get)
+
 
 // get skill by id
-router.route('/:id').get((req,res) => {
-    Skill.findById(req.params.id)
-    .then(skill => res.json(skill))
-    .catch(err => res.status(400).json('Error'+err));
-})
+router.get('/:id',skillController.getById)
 
 // add new skill
-router.route('/add-skill').post((req,res) => {
-    const skill = req.body.skill;
+router.post('/add', skillController.addSkill)
 
-    const newSkill = new Skill({
-        skill
-    })
-
-    newSkill.save()
-    .then(() => res.json("Skill added"))
-    .catch(err => res.status(400).json('Error:'+err))
-})
 
 // update skill
-router.route('/update/:id').post((req,res) => {
-   Skill.findById(req.params.id)
-        .then(skill => {
-            skill.skill = req.body.skill
+router.post('/update/:id',skillController.update)
 
-            skill.save()
-                .then(() => res.status(200).json('Skill Updated!'))
-                .catch(err => res.status(400).json('Error'+err))
-        })
-})
-
-
+// delete skill
+router.delete('/:id', skillController.delete)
 
 module.exports = router;
