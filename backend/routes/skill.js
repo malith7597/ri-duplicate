@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let Skill = require('../model/skills.model')
+
 
 var skillController = require('../controller/skillController')
 
