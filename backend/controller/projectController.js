@@ -1,5 +1,5 @@
 let Project = require('../model/project.model')
-const router = require('../routes/project')
+
 
 // get all projects
 
@@ -14,6 +14,7 @@ exports.get = (req,res) => {
 exports.getbyID = (req,res) => {
     Project.findById(req.params.id)
         .then(project => res.json(project))
+        .catch(err => res.status(400).json('Error:'+err))
 }
 
 // create a project
