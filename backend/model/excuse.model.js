@@ -5,10 +5,14 @@ const Schema = mongoose.Schema;
 const excuseSchema = new Schema({
     RACUOK_ID:{
         type:String,
-         required:true
+        required:true
     },
     memberName:{
         type:String,  
+        required:true
+    },
+    avenue:{
+        type:String,
         required:true
     },
     reason:{
