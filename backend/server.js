@@ -23,16 +23,12 @@ connectDB();
 const memberRouter = require('./routes/member');
 const avenueRouter = require('./routes/avenue');
 const projectRouter = require('./routes/project');
-const skillRouter = require('./routes/skill');
-const excuseRouter = require('./routes/excuse');
-const meetingRouter = require('./routes/meeting')
+const skillRouter = require('./routes/skill')
 
 app.use('/members', memberRouter);
 app.use('/avenues', avenueRouter);
 app.use('/projects', projectRouter);
-app.use('/skills', skillRouter);
-app.use('/excuse',excuseRouter);
-app.use('/meeting', meetingRouter)
+app.use('/skills', skillRouter)
 
 
 app.listen(PORT, ()=>{

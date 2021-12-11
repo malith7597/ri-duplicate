@@ -1,23 +1,24 @@
 const router = require('express').Router();
-
-
-var skillController = require('../controller/skillController')
+let Skill = require('../model/skills.model')
 
 // get skills
-router.get('/',skillController.get)
-
-
-// get skill by id
-router.get('/:id',skillController.getById)
+router.route('/').get((req,res) => {
+    Skill.find()
+        .then(skill => res.json(skill).
+        catch(err => res.status(400).json('Error:'+err)))
+})
 
 // add new skill
-router.post('/add', skillController.addSkill)
+router.route('/add-skill').post((req,res) => {
+    const skill = req.body.skill;
 
+    const newSkill = new Skill({
+        skill
+    })
 
-// update skill
-router.post('/update/:id',skillController.update)
-
-// delete skill
-router.delete('/:id', skillController.delete)
+    newSkill.save()
+    .then(() => res.json("Skill added"))
+    .catch(err => res.status(400).json('Error:'+err))
+})
 
 module.exports = router;
