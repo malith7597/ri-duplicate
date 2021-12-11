@@ -1,5 +1,6 @@
 const mongoose  = require("mongoose")
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv')
+require('dotenv').config()
 
 const db = 'mongodb://localhost:27017/RMIS';
 
@@ -17,3 +18,4 @@ const connectDB = async () => {
 }
 
 module.exports = connectDB;
+

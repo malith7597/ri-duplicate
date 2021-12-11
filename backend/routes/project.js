@@ -1,41 +1,20 @@
 const router = require('express').Router();
-let Project = require('../model/project.model');
-// let Task = require('../model/task.model')
 
+var projectController = require('../controller/projectController')
 
-router.route('/').get((req,res) => {
-    Project.find()
-        .then(project => res.json(project))
-        .catch(err => res.status(400).json('Error'+err));
-})
+// get projects
+router.get('/',projectController.get)
+
+// get specific project
+router.get('/:id',projectController.getbyID)
 
 //create new project
+router.post('/add',projectController.create)
 
-router.route('/add').post((req,res) => {
-    const avenueName = req.body.avenueName;
-    const projectName = req.body.projectName;
-    const startDate = req.body.startDate;
-    const duration = req.body.duration;
-    const task = req.body.task;
-    const projectStatus = req.body.projectStatus;
-    const projectMilestones = req.body.projectMilestones;
+// update a project
+router.post('/update/:id',projectController.updateProject)
 
-    const newProject = new Project({
-        avenueName,
-        projectName,
-        startDate,
-        duration,
-        task,
-        projectStatus,
-        projectMilestones,
-    })
-
-    newProject.save()
-        .then(() => res.send("Project created"))
-        .catch(err => res.status(400).json('Error:'+err));
-
-
-
-})
+// delete project
+router.delete('/:id',projectController.delete)
 
 module.exports = router;
