@@ -1,3 +1,4 @@
+const e = require('express')
 let Excuse = require('../model/excuse.model')
 const generateToken = require('../utils/generateToken')
 
@@ -22,13 +23,11 @@ exports.getById = (req,res) => {
 exports.makeExcuse = (req,res) => {
     const RACUOK_ID = req.body.RACUOK_ID;
     const memberName = req.body.memberName;
-    const avenue = req.body.avenue;
     const reason = req.body.reason;
 
     const newExcuse = new Excuse({
         RACUOK_ID,
         memberName,
-        avenue,
         reason,
        
     })
@@ -46,7 +45,6 @@ exports.ediExcuse = (req,res) => {
         .then(excuse => {
             excuse.RACUOK_ID = req.body.RACUOK_ID;
             excuse.memberName = req.body.memberName;
-            excuse.avenue = req.body.avenue;
             excuse.reason = req.body.reason;
 
             excuse.save()

@@ -24,7 +24,7 @@ const projectSchema = new Schema({
     },
     duration:{
         type:String,
-        required:true
+         required:true
     },
     task:{
         type:taskSchema,
