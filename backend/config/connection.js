@@ -1,7 +1,7 @@
 const mongoose  = require("mongoose")
 const dotenv = require('dotenv').config();
 
-const db = 'mongodb://localhost:27017/RMIS';
+const db = process.env.MONGO_URL;
 
 const connectDB = async () => {
     try {
