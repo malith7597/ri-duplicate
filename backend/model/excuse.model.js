@@ -29,3 +29,4 @@ const excuseModel = mongoose.Schema({
 const Excuse = mongoose.model("Excuse", excuseModel)
 
 module.exports = Excuse
+

@@ -24,11 +24,13 @@ const memberRouter = require('./routes/member');
 const avenueRouter = require('./routes/avenue');
 const projectRouter = require('./routes/project');
 const skillRouter = require('./routes/skill')
+const excuseRouter = require('./routes/excuse')
 
 app.use('/members', memberRouter);
 app.use('/avenues', avenueRouter);
 app.use('/projects', projectRouter);
 app.use('/skills', skillRouter)
+app.use('/excuse', excuseRouter)
 
 
 app.listen(PORT, ()=>{
