@@ -47,6 +47,11 @@ const memberSchema = new Schema({
         default:
           "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
       },
+      userRole:{
+          type:String,
+          default:'basic',
+          enum:['basic','admin','saa','president','director']
+      }
 
 },{
     timestamps:true
