@@ -13,6 +13,10 @@ const meetingSchema = mongoose.Schema({
         type:Date,
         required:true
     },
+    title:{
+        type:String,
+        required:true
+    },
     description:{
         type:String,
         required:true
