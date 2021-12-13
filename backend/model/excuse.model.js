@@ -25,3 +25,7 @@ const excuseModel = mongoose.Schema({
 },{
     timestamps:true
 })
+
+const Excuse = mongoose.model("Excuse", excuseModel)
+
+module.exports = Excuse
