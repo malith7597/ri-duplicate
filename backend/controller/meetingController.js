@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const Meeting = require('../model/meeting.model')
+const {roles} = require('../roles')
 
 // get meetings
 
@@ -8,7 +9,6 @@ const getMeetings = asyncHandler(async (req,res) => {
     res.json(meetings)
 })
 
-// create meetings
 
 const createMeetings = asyncHandler(async (req,res) => {
     const { meetingLink, time, date, title, description, isFinished, avenueName, virtualBg,} = req.body

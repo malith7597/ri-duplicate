@@ -7,7 +7,6 @@
     "city":"city3",
     "avenue":"it",
     "academicYear":"2017/2018",
-    "isAdmin":true,
     "pic":"none"
 }
 
@@ -17,6 +16,19 @@
     "avenueId":"av2",
     "noOfMembers":20
 }
+
+
+{
+     "meetingLink":"google meet",
+            "time":"5pm", 
+            "date":"2021-12-13T19:36:50.140Z",
+            "title":"monthly meeting",
+            "description":"nothing",
+            "isFinished":false ,
+            "avenueName": "it",
+            "virtualBg":"Nothing"
+}
+
 
 {
     "avenueName":"Club Service",

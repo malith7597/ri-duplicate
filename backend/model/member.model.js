@@ -36,11 +36,6 @@ const memberSchema = new Schema({
         type:String,
         required:true
     },
-    isAdmin:{
-        type:Boolean,
-        required:true,
-        default:false
-    },
     pic: {
         type: String,
         required: true,
@@ -49,8 +44,9 @@ const memberSchema = new Schema({
       },
       userRole:{
           type:String,
-          default:'basic',
-          enum:['basic','admin','saa','president','director']
+          enum:['basic', 'director', 'saa'],
+          default:'basic'
+
       }
 
 },{
