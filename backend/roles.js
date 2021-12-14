@@ -17,6 +17,10 @@ exports.roles = (function() {
      .readOwn("meeting")
      .deleteOwn("meeting")
      .updateOwn("meeting")
+     .createOwn("project")
+     .readOwn("project")
+     .deleteOwn("project")
+     .updateOwn("project")
      
     ac.grant("saa")
      .extend("basic")
