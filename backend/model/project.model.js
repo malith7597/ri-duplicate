@@ -35,6 +35,11 @@ const projectSchema = new Schema({
          required:true,
          default:false
     },
+     member:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Member"
+    },
     projectMilestones:[String],
 },{
     timestamps:true
