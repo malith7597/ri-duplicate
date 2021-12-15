@@ -3,7 +3,7 @@ const {createMeetings, getMeetings, updateMeeting, deleteMeeting, getMeetingById
 const {protect} = require('../middleware/authMiddleware')
 const {grantAccess} = require('../permission/permission')
 
-router.route('/').get(protect, grantAccess('readAny', 'meeting'), getMeetings)
+router.route('/').get(protect, getMeetings)
 router.route('/create').post(protect, grantAccess('createOwn', 'meeting') , createMeetings)
 router.route('/:id').get(getMeetingById).put(protect, updateMeeting).delete(protect, deleteMeeting)
 

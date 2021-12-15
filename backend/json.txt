@@ -50,3 +50,7 @@
    "avenue":"IS",
    "reason":"sick"
 }
+
+basic user-:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYmExMmI5YzNhYWQ1YzYwYTUxZmM0NCIsImlhdCI6MTYzOTU4NDQ5MywiZXhwIjoxNjQyMTc2NDkzfQ.ujkIY0WHxtfIQbdbrSc-1A89OXpYaUgt2R6aPyid0wg
+

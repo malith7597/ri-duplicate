@@ -1,24 +1,11 @@
 const router = require('express').Router();
-let Skill = require('../model/skills.model')
+const {getSkills, createSkill, getSkillbyId, updateSkill, deleteSkill} = require('../controller/skillController')
+const {protect} = require('../middleware/authMiddleware')
+const {grantAccess} = require('../permission/permission')
 
-// get skills
-router.route('/').get((req,res) => {
-    Skill.find()
-        .then(skill => res.json(skill).
-        catch(err => res.status(400).json('Error:'+err)))
-})
+router.route('/').get(protect, getSkills)
+router.route('/create').post(protect, createSkill)
+router.route('/:id').get(getSkillbyId).put(protect, updateSkill).delete(protect, deleteSkill)
 
-// add new skill
-router.route('/add-skill').post((req,res) => {
-    const skill = req.body.skill;
 
-    const newSkill = new Skill({
-        skill
-    })
-
-    newSkill.save()
-    .then(() => res.json("Skill added"))
-    .catch(err => res.status(400).json('Error:'+err))
-})
-
-module.exports = router;
+module.exports = router
