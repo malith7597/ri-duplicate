@@ -43,3 +43,10 @@
     },
     "projectMilestones":["started","dry run","finished"]
 }
+
+{
+   "RACUOK_ID":"RCUUOK11",
+   "memberName":"Basic member",
+   "avenue":"IS",
+   "reason":"sick"
+}

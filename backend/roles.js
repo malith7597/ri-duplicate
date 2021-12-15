@@ -6,6 +6,7 @@ exports.roles = (function() {
      .readOwn("profile")
      .updateOwn("profile")
      .createOwn("excuse")
+     .readOwn("excuse")
 
      
     ac.grant("director")
