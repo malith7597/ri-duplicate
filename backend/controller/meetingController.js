@@ -5,7 +5,7 @@ const {roles} = require('../roles')
 // get meetings
 
 const getMeetings = asyncHandler(async (req,res) => {
-    const meetings = await Meeting.find({  member: req.member._id})
+    const meetings = await Meeting.find()
     res.json(meetings)
 })
 

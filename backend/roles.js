@@ -7,6 +7,10 @@ exports.roles = (function() {
      .updateOwn("profile")
      .createOwn("excuse")
      .readOwn("excuse")
+     .readOwn("skill")
+     .updateOwn("skill")
+     .createOwn("skill")
+     .readOwn("skill")
 
      
     ac.grant("director")
@@ -22,6 +26,7 @@ exports.roles = (function() {
      .readOwn("project")
      .deleteOwn("project")
      .updateOwn("project")
+     .readAny("skill")
      
     ac.grant("saa")
      .extend("basic")

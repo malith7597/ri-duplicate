@@ -3,7 +3,7 @@ const {getSkills, createSkill, getSkillbyId, updateSkill, deleteSkill} = require
 const {protect} = require('../middleware/authMiddleware')
 const {grantAccess} = require('../permission/permission')
 
-router.route('/').get(protect, getSkills)
+router.route('/').get(protect, grantAccess("readAny","skill"), getSkills)
 router.route('/create').post(protect, createSkill)
 router.route('/:id').get(getSkillbyId).put(protect, updateSkill).delete(protect, deleteSkill)
 
