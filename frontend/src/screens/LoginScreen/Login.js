@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import {Image} from "react-bootstrap";
 import {Link} from 'react-router-dom'
 
 const Login = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     return (
         <div className='container'>
 
