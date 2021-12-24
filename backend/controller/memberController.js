@@ -2,6 +2,25 @@ const asyncHandler = require('express-async-handler')
 const Member = require('../model/member.model')
 const generateToken = require('../utils/generateToken')
 
+// get all members
+
+const getAllMembers = asyncHandler(async (req, res) => {
+    const members = await Member.find()
+    res.json(members)
+})
+
+// get member by Id
+
+const getMemberById = asyncHandler(async (req, res) => {
+    const member = await Member.findById(req.params.id)
+
+    if(member) {
+        res.json(member)
+    } else {
+        res.status(404).json({message:"Member not found"})
+    }
+})
+
 // register user
 
 const registerMember = asyncHandler(async (req, res) => {
@@ -62,4 +81,4 @@ const authMember = asyncHandler(async (req,res) => {
    
 });
 
-module.exports = {registerMember, authMember}
+module.exports = {registerMember, authMember, getAllMembers, getMemberById}
