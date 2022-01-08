@@ -5,7 +5,7 @@ const asyncHandler = require('express-async-handler')
 // get all projects
 
 const getProjects = asyncHandler(async (req,res) => {
-    const projects = await Project.find({member: req.member._id})
+    const projects = await Project.find()
   
     res.send(projects)
 })
