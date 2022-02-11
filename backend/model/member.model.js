@@ -10,11 +10,17 @@ const memberSchema = new Schema({
     },
     email:{
         type:String, 
-        required:true
+        required:true,
+        unique:true,
+        match: [
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            "Please provide a valid email",
+          ],
     },
     password:{
         type:String, 
-        required:true
+        required:true,
+        minlength:6,
     },
     RACUOK_ID:{
         type:String,
