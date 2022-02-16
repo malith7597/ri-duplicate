@@ -4,6 +4,7 @@ const Excuse = require('../model/excuse.model')
 // get excuses
 
 const getExcuses = asyncHandler(async (req, res) => {
+    
     const excuses = await Excuse.find()
     res.json(excuses)
 })

@@ -18,8 +18,6 @@ const createProject = asyncHandler(async (req, res) => {
 
     var permission = roles.can(req.member.userRole).createOwn("project")
 
-    console.log(req.member.userRole);
-
     if(permission.granted) {
         if(!avenueName || !projectName || !startDate) {
             res.status(400)

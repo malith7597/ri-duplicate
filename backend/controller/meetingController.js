@@ -13,24 +13,32 @@ const getMeetings = asyncHandler(async (req,res) => {
 const createMeetings = asyncHandler(async (req,res) => {
     const { meetingLink, time, date, title, description, isFinished, avenueName, virtualBg,} = req.body
 
-    if(!meetingLink || !time || !date ) {
-        res.status(400)
-        throw new error("Please fill  fields")
-    } else {
-        const meeting = new Meeting({
-            member: req.member._id, 
-            meetingLink,
-            time, 
-            date, 
-            title,
-            description, 
-            isFinished, 
-            avenueName, 
-            virtualBg,})
+    var permission = roles.can(req.member.userRole).createOwn("meeting")
 
-            const createdMeeting = await meeting.save()
-            res.status(201).json(createdMeeting)
+    if(permission.granted) {
+        if(!meetingLink || !time || !date ) {
+            res.status(400)
+            throw new error("Please fill  fields")
+        } else {
+            const meeting = new Meeting({
+                member: req.member._id, 
+                meetingLink,
+                time, 
+                date, 
+                title,
+                description, 
+                isFinished, 
+                avenueName, 
+                virtualBg,})
+    
+                const createdMeeting = await meeting.save()
+                res.status(201).json(createdMeeting)
+        }
+    } else {
+        res.status(403)
+        throw new Error("You don't have permission!")
     }
+  
 })
 
 // get meeting by Id
@@ -58,21 +66,34 @@ const updateMeeting = asyncHandler(async (req,res) => {
         throw new Error("You cannot perform this action")
     }
 
-    if(meeting) {
-        meeting.meetingLink = meetingLink
-        meeting.time = time
-        meeting.date = date
-        meeting.title = title
-        meeting.description = description
-        meeting.isFinished = isFinished
-        meeting.avenueName = avenueName
-        meeting.virtualBg = virtualBg
+    var permission = roles.can(req.member.userRole).updateAny("meeting")
 
-        const updatedMeeting = await meeting.save()
-        res.json(updatedMeeting)
-    } else{
-        res.status(404)
-        throw new Error("Meeting not found")
+    if(permission.granted === false) {
+        if(meeting.member.toString() === req.member._id.toString()) {
+            permission = roles.can(req.member.userRole).updateOwn("meeting")
+        }
+    }
+
+    if(permission.granted) {
+        if(meeting) {
+            meeting.meetingLink = meetingLink
+            meeting.time = time
+            meeting.date = date
+            meeting.title = title
+            meeting.description = description
+            meeting.isFinished = isFinished
+            meeting.avenueName = avenueName
+            meeting.virtualBg = virtualBg
+    
+            const updatedMeeting = await meeting.save()
+            res.json(updatedMeeting)
+        } else{
+            res.status(404)
+            throw new Error("Meeting not found")
+        }
+    } else {
+        res.status(403)
+        throw new Error("You don't have permission")
     }
 
 })
@@ -82,17 +103,28 @@ const updateMeeting = asyncHandler(async (req,res) => {
 const deleteMeeting = asyncHandler(async (req,res) => {
     const meeting = await Meeting.findById(req.params.id)
 
-    if(meeting.member.toString() !== req.member._id.toString()) {
-        throw new Error("You cannot perform this action")
+    var permission = roles.can(req.member.userRole).deleteAny("meeting")
+
+    if(permission.granted === false) {
+        if(meeting.member.toString() === req.member._id.toString()) {
+            permission = roles.can(req.member.userRole).deleteOwn("meeting")
+        }
     }
 
-    if(meeting) {
-        await meeting.remove()
-        res.json({message: "Meeting deleted"})
+    if (permission.granted) {
+        if(meeting) {
+            await meeting.remove()
+            res.json({message: "Meeting deleted"})
+        } else {
+            res.status(404)
+            throw new Error("Meeting not found")
+        }
     } else {
-        res.status(404)
-        throw new Error("Meeting not found")
+        res.status(403)
+        throw new Error("You don't have permission!")
+
     }
+    
 })
 
 module.exports = {getMeetings, createMeetings, getMeetingById, updateMeeting, deleteMeeting}
