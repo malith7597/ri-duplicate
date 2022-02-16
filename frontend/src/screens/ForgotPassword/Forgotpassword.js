@@ -1,11 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React ,{Component} from 'react'
 import { Form, Button } from 'react-bootstrap';
 import {Image} from "react-bootstrap";
 import {Link} from 'react-router-dom';
+import './forgotpassword.css'
+const Message =()=>{
 
-const Login = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    return (
+        <p className='p1'> That's okay!...
+            <br/>
+            Just enter the email address you've used to register with us 
+            <br/>
+            and we'll send you a reset link!.
+        </p>
+    )
+
+
+}
+
+
+const ForgotPassword = () => {
+    
 
     return (
         <div className='container'>
@@ -13,8 +27,9 @@ const Login = () => {
             <div className='row mt-5'>
                 <div className='col-md-6'>
                     <div className='row mt-5'>
-                        <h2 className='text-center mb-5 fw-bold fs-1'>Login</h2>
+                        <h2 className='text-center mb-5 fw-bold fs-1'>Forgot Password</h2>
                     </div>
+                    <Message/>
                     <div className='row'>
                     <Form>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -22,13 +37,8 @@ const Login = () => {
                             <Form.Control type="email" placeholder="Enter email" />
 
                         </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label> Password <Link to="/fogot">fogot password ?</Link></Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
-                        </Form.Group>
                         <Button variant="primary" type="submit" className='mb-3'>
-                            Login
+                            Submit
                         </Button>
                         <Form.Text className="text-muted">
                             <p> New User? <Link to="/register">Register Here</Link></p>
@@ -38,11 +48,11 @@ const Login = () => {
                    
                 </div>
                 <div className='col-md-6'>
-                    <Image src="./img/login.jpg" thumbnail style={{ border: "none" }} />
+                    <Image src="./img/forgot-password.png" thumbnail style={{ border: "none" }} />
                 </div>
             </div>
         </div>
     )
 }
 
-export default Login;
+export default ForgotPassword;
