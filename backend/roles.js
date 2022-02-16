@@ -35,6 +35,13 @@ exports.roles = (function() {
      .deleteAny("meeting")
      .updateAny("meeting")
      .deleteAny("profile")
+
+    ac.grant("sec")
+     .extend("saa")
+     .extend("director")
+     .updateAny("project")
+     .deleteAny("project")
+    
      
     return ac;
     })();

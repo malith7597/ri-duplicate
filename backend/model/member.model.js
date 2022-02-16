@@ -20,7 +20,7 @@ const memberSchema = new Schema({
     password:{
         type:String, 
         required:true,
-        minlength:6,
+        minlength:6
     },
     RACUOK_ID:{
         type:String,
@@ -50,7 +50,7 @@ const memberSchema = new Schema({
       },
       userRole:{
           type:String,
-          enum:['basic', 'director', 'saa'],
+          enum:['basic', 'director', 'saa','sec','pre','admin'],
           default:'basic'
 
       }
